@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SuperCool Packer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at top, #24244a 0%, #0b0b14 55%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            background: rgba(10, 10, 20, 0.75);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .version {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 100px 25px 70px;
+
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            background: rgba(120, 80, 255, 0.15);
+            border: 1px solid rgba(140, 100, 255, 0.4);
+
+            color: #bdaeff;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 64px;
+            margin: 0;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #9e8cff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            max-width: 700px;
+
+            margin: 25px auto;
+
+            color: #b5b5c5;
+
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            margin-top: 35px;
+        }
+
+        .download {
+            display: inline-block;
+
+            padding: 16px 32px;
+
+            border-radius: 12px;
+
+            background: #7457ff;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 17px;
+
+            box-shadow:
+                0 10px 30px rgba(116, 87, 255, 0.3);
+
+            transition: 0.2s;
+        }
+
+        .download:hover {
+            transform: translateY(-3px);
+
+            background: #846cff;
+
+            box-shadow:
+                0 15px 40px rgba(116, 87, 255, 0.5);
+        }
+
+        .github {
+            display: inline-block;
+
+            padding: 16px 32px;
+
+            border-radius: 12px;
+
+            border: 1px solid #333345;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .github:hover {
+            background: #181824;
+        }
+
+        .features {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 20px 25px 100px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+
+            background: rgba(255,255,255,0.045);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 18px;
+
+            backdrop-filter: blur(10px);
+
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(130,100,255,0.5);
+        }
+
+        .icon {
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            margin-top: 0;
+
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #aaaaba;
+
+            line-height: 1.6;
+        }
+
+        .info {
+            max-width: 900px;
+
+            margin: 0 auto 80px;
+
+            padding: 30px;
+
+            background: rgba(255,255,255,0.035);
+
+            border-radius: 18px;
+
+            border: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .info h2 {
+            margin-top: 0;
+        }
+
+        .code {
+            padding: 18px;
+
+            background: #08080e;
+
+            border-radius: 10px;
+
+            color: #bfb5ff;
+
+            font-family: Consolas, monospace;
+
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+
+            padding: 30px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.07);
+
+            color: #777;
+        }
+
+        @media (max-width: 800px) {
+
+            h1 {
+                font-size: 45px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .download,
+            .github {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        SuperCool Packer
+    </div>
+
+    <div class="version">
+        v1.1
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="badge">
+        MSVC • Windows • No Compression
+    </div>
+
+    <h1>
+        SuperCool Packer
+    </h1>
+
+    <p class="subtitle">
+        Упаковщик Unity-игр в один EXE-файл.
+        Собирает игру вместе со всеми файлами
+        и запускает её прямо из одного исполняемого файла.
+    </p>
+
+
+    <div class="buttons">
+
+        <!--
+            ЗДЕСЬ МЕНЯЕШЬ ССЫЛКУ НА СКАЧИВАНИЕ
+        -->
+
+        <a
+            class="download"
+            href="https://github.com/coolcoolcool-cketch/SuperCoolPacker/releases/download/SuperCoolPacker/supercool_packer.zip"
+        >
+            Скачать SuperCool Packer
+        </a>
+
+
+        <!-- Можно заменить на свой GitHub -->
+
+        <a
+            class="github"
+            href="https://github.com/"
+            target="_blank"
+        >
+            GitHub
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="features">
+
+    <div class="card">
+
+        <div class="icon">
+            📦
+        </div>
+
+        <h2>
+            Один EXE
+        </h2>
+
+        <p>
+            Игра и её файлы объединяются
+            в один исполняемый файл.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="icon">
+            ⚡
+        </div>
+
+        <h2>
+            Быстрая упаковка
+        </h2>
+
+        <p>
+            SuperCool Packer использует
+            собственный архив без дополнительного
+            сжатия файлов.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="icon">
+            🛡️
+        </div>
+
+        <h2>
+            Проверка CRC32
+        </h2>
+
+        <p>
+            При распаковке содержимое файлов
+            проверяется по CRC32.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="icon">
+            💻
+        </div>
+
+        <h2>
+            MSVC
+        </h2>
+
+        <p>
+            Исполняемый загрузчик собирается
+            при помощи Microsoft Visual C++.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="icon">
+            🗂️
+        </div>
+
+        <h2>
+            Unity
+        </h2>
+
+        <p>
+            Упаковщик автоматически ищет
+            папку *_Data и главный EXE игры.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="icon">
+            🔧
+        </div>
+
+        <h2>
+            Собственный формат
+        </h2>
+
+        <p>
+            Архив использует собственный
+            формат SCPK и footer SCPFTR01.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="info">
+
+    <h2>
+        Как это работает?
+    </h2>
+
+    <p>
+        SuperCool Packer создаёт C++-stub,
+        собирает архив игры и объединяет их
+        в один EXE.
+    </p>
+
+    <div class="code">
+        [ C++ STUB ]<br>
+        [ SCPK ARCHIVE ]<br>
+        [ SCPFTR01 FOOTER ]
+    </div>
+
+    <p>
+        При запуске EXE определяет расположение
+        архива, распаковывает файлы во временную
+        папку и запускает главный EXE игры.
+    </p>
+
+</section>
+
+
+<footer>
+
+    SuperCool Packer © 2026<br>
+    made with super script(coolengineers™All rights reserved)
+
+</footer>
+
+
+</body>
+</html>
